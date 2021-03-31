@@ -2,42 +2,63 @@ import React from 'react'
 import {useEffect, useState} from 'react';
 
 const Cards = () => {
-    const [items, setItems] = useState(null);
-    const [drawnCard, setDrawnCard] = useState(null);
-    const [deckID, setDeckID] = useState(null);
+    const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [drawnCard1, setDrawnCard1] = useState(null);
+    const [haveCard1, setHaveCard1] = useState(false);
+    const [drawnCard2, setDrawnCard2] = useState(null);
+    const [haveCard2, setHaveCard2] = useState(false);
 
     // hitting the API
 
-    async function fetchData() { 
-        const response = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`);
-        const data = await response.json();
-        setItems(data);
-        setDeckID(data.deck_id);
-        setIsLoading(false);
-        if (isLoading === false) { 
-            console.log(items);
-            console.log(deckID);
-        }
-    }
-
     useEffect(() => { 
+        async function fetchData() { 
+            const response = await fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`);
+            const data = await response.json();
+            setItems(data);
+            setIsLoading(false);
+        }
+
         fetchData();
     }, []);
 
-    // function drawCard() { 
-    //     const response = fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`);
-    //     const data = response.json();
-    // }
+    // Fetch from API on click, using existing deck ID
 
-
+    async function drawCard() { 
+        const response = await fetch(`https://deckofcardsapi.com/api/deck/${items.deck_id}/draw/?count=1`);
+        const data = await response.json();
+        console.log(data.cards[0]);
+        if (drawnCard1 === null) { 
+            setDrawnCard1(data.cards[0]);
+            setHaveCard1(true);
+        } else {
+            setDrawnCard2(data.cards[0]);
+            setHaveCard2(true);
+        }
+    }
 
     return (
-        <div>
-            {isLoading ? "Loading..." : 
-            (<h1>{items.deck_id}</h1>)}
+        <div className='cardContainer'>
 
-            <button>Draw a Card!</button>
+            <div className='cardContainer__cards'>
+                {haveCard1 ? 
+                (<div>
+                    <h1>{drawnCard1.value} of {drawnCard1.suit}</h1>
+                    <img src={drawnCard1.image}/>
+                </div>) : 
+                (<h1>Please pick a card</h1>)}
+    
+                {haveCard2 ? 
+                (<div>
+                    <h1>{drawnCard2.value} of {drawnCard2.suit}</h1>
+                    <img src={drawnCard2.image}/>
+                </div>) : 
+                (<h1>Please pick a card</h1>)}
+            </div>
+
+
+
+            <button onClick={drawCard}>Draw a card here!</button> 
         </div>
     )
 }
