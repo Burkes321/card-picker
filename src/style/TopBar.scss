@@ -1,0 +1,20 @@
+.topbar { 
+    width: 100vw;
+    height: 10vh;
+    display: flex; 
+    justify-content: space-between;
+    border-bottom: solid 2px black;
+    margin-top: 2%;
+    .topbar__circle-container {
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+        .topbar__circle { 
+            height: 90%;
+            width: 30%;
+            border-radius: 50%;
+            background-color: black;
+        }
+    }
+}
+
