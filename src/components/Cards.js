@@ -31,9 +31,11 @@ const Cards = () => {
         if (drawnCard1 === null) { 
             setDrawnCard1(data.cards[0]);
             setHaveCard1(true);
-        } else {
+        } else if (drawnCard1 != null && drawnCard2 === null) {
             setDrawnCard2(data.cards[0]);
             setHaveCard2(true);
+        } else { 
+            console.log("can't add more");
         }
     }
 
