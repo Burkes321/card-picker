@@ -4,11 +4,12 @@
     display: flex; 
     justify-content: space-between;
     border-bottom: solid 2px black;
-    margin-top: 2%;
+    margin-top: 1%;
     .topbar__circle-container {
         display: flex;
         justify-content: space-between;
         width: 20%;
+        height: 90%;
         .topbar__circle { 
             height: 90%;
             width: 30%;
