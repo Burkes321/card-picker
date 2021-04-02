@@ -8,6 +8,7 @@ const Cards = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [drawnCard1, setDrawnCard1] = useState(null);
     const [drawnCard2, setDrawnCard2] = useState(null);
+    const [count, setCount] = useState(52);
 
     // hitting the API
 
