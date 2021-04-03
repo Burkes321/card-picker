@@ -1,5 +1,5 @@
-import TopBar from './components/TopBar';
-import Cards from './components/Cards';
+import TopBar from './components/topbar/TopBar';
+import Cards from './components/card/Cards';
 import './App.scss';
 
 

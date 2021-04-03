@@ -1,8 +1,8 @@
 .card-container { 
     display: flex;
     flex-direction: column;
-    align-items: space-between;
-    justify-content: center;
+    align-items: space-around; 
+    justify-content: space-around;
     height: 70vh;
     margin-top: 5%;
     .snap { 
@@ -18,8 +18,13 @@
             border-radius: 20px;
         }
     }
-    button { 
-        padding: 2%;
-        border-radius: 10px;   
+    .card-container__button { 
+        text-align: center;
+        button { 
+            padding: 2% 3%;
+            border-radius: 20px;
+            background-color: lightskyblue;
+        }
     }
+
 }
