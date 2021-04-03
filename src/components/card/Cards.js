@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import Card from './subcomponents/Card';
+import regeneratorRuntime from 'regenerator-runtime';
 
 
 const Cards = () => {
@@ -64,7 +65,7 @@ const Cards = () => {
             </div>
 
             <div className='card-container__cards'>
-
+                
                 {drawnCard1 ? (<Card value={drawnCard1.value} suit={drawnCard1.suit} img={drawnCard1.image} />) : (<p className='card'></p>)}
                 {drawnCard2 ? (<Card value={drawnCard2.value} suit={drawnCard2.suit} img={drawnCard2.image} />) : (<p className='card'></p>)}
 

@@ -1,6 +1,7 @@
 import TopBar from './components/topbar/TopBar';
 import Cards from './components/card/Cards';
 import './App.scss';
+import React from 'react';
 
 
 function App() {
